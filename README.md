@@ -177,8 +177,6 @@ The program generates a three-panel visualization containing:
 
 The generated graph is saved as a PNG image.
 
-![Fourier Series Output](output_graph.png)
-
 ## Learning Outcomes
 
 This project provides practical experience in:
