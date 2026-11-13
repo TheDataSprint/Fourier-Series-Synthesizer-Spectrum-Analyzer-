@@ -59,8 +59,8 @@ Fourier-Series-Synthesizer-Spectrum-Analyzer/
 │
 ├── PROJECT_REPORT.pdf
 ├── README.md
-├── output_graph.png
-├── fourier_synthesizer.py
+├── output_graph[1].png
+├── fourier_synthesize[1]r.py
 └── requirements.txt
 ```
 
@@ -87,7 +87,7 @@ python -m pip install -r requirements.txt
 **4. Run the Program**
 
 ```bash
-python fourier_synthesizer.py
+python fourier_synthesizer[1].py
 ```
 
 ## How to Use
@@ -104,10 +104,10 @@ Run the program and select an option from the menu:
 **Generate Dashboard Directly**
 
 ```bash
-python fourier_synthesizer.py --demo
+python fourier_synthesizer[1].py --demo
 ```
 
-The generated graph is saved as `output_graph.png`.
+The generated graph is saved as `output_graph[1].png`.
 
 ## Sample Output
 
@@ -140,5 +140,3 @@ The project generates a six-panel dashboard containing:
 ## Author
 
 **Prince Yadav**
-
-Developed for academic and educational purposes.
