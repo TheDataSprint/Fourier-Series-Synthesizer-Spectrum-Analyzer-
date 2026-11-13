@@ -57,7 +57,7 @@ Generates a six-panel dashboard showing signal waveforms, harmonics, spectrum, a
 ```text
 Fourier-Series-Synthesizer-Spectrum-Analyzer/
 │
-├── PROJECT_REPORT.pdf
+├── Fourier_Series_Project_Report_Prince_Yadav.pdf
 ├── README.md
 ├── output_graph[1].png
 ├── fourier_synthesizer[1].py
