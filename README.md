@@ -181,7 +181,7 @@ The program generates a six-panel visualization containing:
 
 The generated dashboard is saved as `output_graph.png`.
 
-![Fourier Series Synthesizer Dashboard](output_graph.png)
+![Fourier Series Synthesizer Dashboard](./output_graph.png)
 
 ## Learning Outcomes
 
