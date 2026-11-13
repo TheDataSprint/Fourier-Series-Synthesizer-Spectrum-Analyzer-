@@ -60,7 +60,7 @@ Fourier-Series-Synthesizer-Spectrum-Analyzer/
 ├── PROJECT_REPORT.pdf
 ├── README.md
 ├── output_graph[1].png
-├── fourier_synthesize[1]r.py
+├── fourier_synthesizer[1].py
 └── requirements.txt
 ```
 
