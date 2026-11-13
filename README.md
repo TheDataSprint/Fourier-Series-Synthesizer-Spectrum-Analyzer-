@@ -69,7 +69,7 @@ Fourier-Series-Synthesizer-Spectrum-Analyzer/
 **1. Clone the Repository**
 
 ```bash
-git clone <your-repository-url>
+git clone <https://github.com/TheDataSprint/Fourier-Series-Synthesizer-Spectrum-Analyzer-.git>
 ```
 
 **2. Open the Project Folder**
