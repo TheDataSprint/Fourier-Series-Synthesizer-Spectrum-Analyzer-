@@ -1,156 +1,200 @@
 # Fourier Series Synthesizer & Spectrum Analyzer
 
-A Python 3 command-line application that demonstrates how periodic signals can be represented as sums of sinusoidal harmonics. It generates standard waveforms, synthesizes finite Fourier-series approximations, and visualizes the time-domain waveform, amplitude spectrum, and phase spectrum.
+A Python-based implementation of Fourier Series concepts, designed to generate periodic signals, calculate Fourier coefficients, reconstruct waveforms, and analyze their frequency components through numerical computation and visualization.
 
----
+The project provides an interactive, menu-driven environment for studying harmonic synthesis and understanding the relationship between time-domain signals and frequency-domain representations.
 
 ## Overview
 
-Fourier Series is an important mathematical concept in Signals and Systems. It explains how complex periodic signals can be represented as combinations of simple sinusoidal components.
+Fourier Series is an important mathematical concept in Signals and Systems. It represents periodic signals as combinations of sinusoidal harmonics.
 
-This project provides an interactive Python application that connects theoretical Fourier Series concepts with numerical computation and graphical visualization.
-
-Users can generate different periodic waveforms, calculate Fourier coefficients, reconstruct signals using a selected number of harmonics, and analyze their frequency-domain properties.
-
-The application supports NumPy for numerical calculations and Matplotlib for visualization. It does not require SciPy or a graphical application framework.
-
-## Problem Statement
-
-A periodic signal can often be described using a Fourier series, but understanding the relationship between its time-domain shape and frequency components can be difficult from mathematical equations alone.
-
-This project addresses that problem by providing an interactive tool that calculates Fourier coefficients and visualizes the resulting waveform and spectrum. It also demonstrates how using a finite number of harmonics affects signal reconstruction.
-
-## Objectives
-
-- Generate four commonly studied periodic signals.
-- Calculate trigonometric Fourier-series coefficients.
-- Reconstruct signals using a user-selected number of harmonics.
-- Support user-entered Fourier coefficients.
-- Display harmonic frequencies, peak amplitudes, and phases.
-- Generate and save labelled graphs for demonstration and reporting.
+This project demonstrates how different periodic waveforms can be reconstructed using a finite number of harmonics. Users can generate standard signals, enter custom Fourier coefficients, and observe their corresponding waveforms and spectra.
 
 ## Key Features
 
-### 1. Standard Signal Generation
+**1. Signal Generation**
 
-Generate and visualize four commonly used periodic signals:
+Generation of commonly studied periodic signals:
 
-- Sine wave
-- Square wave
-- Triangle wave
-- Sawtooth wave
+- Sine Wave
+- Square Wave
+- Triangle Wave
+- Sawtooth Wave
 
-### 2. Fourier Series Synthesis
+**2. Fourier Series Synthesis**
 
-Reconstruct the selected periodic waveform using a finite number of sinusoidal harmonics.
+Reconstruction of periodic signals using a user-selected number of harmonics.
 
-### 3. Custom Coefficient Mode
+**3. Custom Coefficient Mode**
 
-Enter Fourier-series coefficients directly:
+Supports user-defined Fourier coefficients (`a0`, `an`, and `bn`).
 
-- DC coefficient (`a0`)
-- Cosine coefficients (`an`)
-- Sine coefficients (`bn`)
+**4. Spectrum Analysis**
 
-### 4. Spectrum Analysis
-
-Calculate and display:
+Calculation and visualization of:
 
 - Harmonic frequencies
-- Cosine coefficients
-- Sine coefficients
-- Harmonic peak amplitudes
-- Phase angles in degrees
+- Cosine and sine coefficients
+- Peak amplitudes
+- Phase angles
 
-### 5. Graphical Visualization
+**5. Graphical Visualization**
 
-Generate a three-panel graph containing:
+Matplotlib-based visualization of:
 
-- Time-domain waveform and Fourier approximation
+- Time-domain waveform
 - Amplitude spectrum
 - Phase spectrum
 
-### 6. Demo Mode
+**6. Additional Features**
 
-Run the application with a predefined example using:
+- Interactive command-line interface.
+- Automatic graph generation and saving.
+- Demo mode using `--demo`.
+- Input validation for reliable execution.
+
+## Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| Python 3 | Core programming language |
+| NumPy | Numerical computation and coefficient calculations |
+| Matplotlib | Signal visualization and graph plotting |
+
+## Mathematical Concepts Implemented
+
+The project demonstrates the trigonometric Fourier Series:
+
+$$
+x(t)=\frac{a_0}{2}+\sum_{n=1}^{\infty}[a_n\cos(n\omega_0t)+b_n\sin(n\omega_0t)]
+$$
+
+Fundamental frequency:
+
+$$
+f_0=\frac{1}{T}
+$$
+
+Harmonic peak amplitude:
+
+$$
+R_n=\sqrt{a_n^2+b_n^2}
+$$
+
+Phase angle:
+
+$$
+\phi_n=\operatorname{atan2}(b_n,a_n)
+$$
+
+The implementation covers Fourier coefficient calculation, harmonic reconstruction, amplitude spectrum, phase spectrum, and the Gibbs phenomenon.
+
+## Project Structure
+
+```text
+Fourier-Series-Synthesizer-Spectrum-Analyzer/
+│
+├── PROJECT_REPORT.pdf
+├── README.md
+├── output_graph.png
+├── fourier_synthesizer.py
+└── requirements.txt
+```
+
+## Installation and Setup
+
+**Prerequisites**
+
+- Python 3.9 or higher
+- pip package manager
+
+**Step 1: Clone the Repository**
+
+```bash
+git clone <your-repository-url>
+```
+
+**Step 2: Navigate to the Project Directory**
+
+```bash
+cd Fourier-Series-Synthesizer-Spectrum-Analyzer
+```
+
+**Step 3: Install Dependencies**
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+**Step 4: Run the Program**
+
+```bash
+python fourier_synthesizer.py
+```
+
+## How to Use
+
+1. Execute the Python program.
+2. Select a standard signal or custom coefficient mode.
+3. Enter the required amplitude and frequency values.
+4. Specify the number of harmonics.
+5. View the calculated Fourier coefficients in the terminal.
+6. Observe the generated waveform and frequency spectra.
+7. Access the automatically saved graph as `output_graph.png`.
+
+**Demo Mode**
+
+Run the following command to generate a predefined example:
 
 ```bash
 python fourier_synthesizer.py --demo
 ```
 
-### 7. Input Validation
+## Sample Output
 
-The application validates menu choices, numerical inputs, finite values, and harmonic counts to prevent invalid input.
+The program generates a three-panel visualization containing:
+
+- **Time-Domain Waveform:** Compares the ideal signal with its Fourier approximation.
+- **Amplitude Spectrum:** Displays the peak amplitude of DC and harmonic components.
+- **Phase Spectrum:** Displays the phase angles of non-zero harmonics.
+
+The generated visualization is saved as a PNG image.
+
+![Fourier Series Output](output_graph.png)
+
+## Learning Outcomes
+
+This project provides practical experience in:
+
+- Understanding Fourier Series representation.
+- Calculating trigonometric Fourier coefficients.
+- Reconstructing signals using harmonics.
+- Interpreting amplitude and phase spectra.
+- Understanding the Gibbs phenomenon.
+- Applying NumPy and Matplotlib to mathematical problems.
+
+## Future Scope
+
+Potential improvements include:
+
+- Fourier Transform and frequency-domain analysis.
+- User-controlled phase shifting.
+- Numerical coefficient estimation from sampled signals.
+- Interactive graphical user interface.
+- Frequency-domain data export.
+
+## References
+
+- A. V. Oppenheim, A. S. Willsky, and S. H. Nawab, *Signals and Systems*, 2nd Edition, 1997.
+- B. P. Lathi and R. A. Green, *Linear Systems and Signals*, 3rd Edition, 2018.
+- [NumPy Documentation](https://numpy.org/doc/)
+- [Matplotlib Documentation](https://matplotlib.org/stable/)
+
+## Author
+
+**Prince Yadav**
+
+Developed for academic and educational purposes.
 
 ---
 
-## Technologies Used
-
-| Technology | Purpose |
-|---|---|
-| Python 3 | Application logic and command-line interface |
-| NumPy | Numerical calculations, arrays, and trigonometric operations |
-| Matplotlib | Waveform plotting and spectrum visualization |
-
-## Mathematical Background
-
-For a continuous-time periodic signal with period \(T\), the fundamental frequency is:
-
-\[
-f_0 = \frac{1}{T}
-\]
-
-The fundamental angular frequency is:
-
-\[
-\omega_0 = 2\pi f_0
-\]
-
-### Trigonometric Fourier Series
-
-The periodic signal can be represented as:
-
-\[
-x(t)=\frac{a_0}{2}+
-\sum_{n=1}^{\infty}
-\left[
-a_n\cos(n\omega_0t)+
-b_n\sin(n\omega_0t)
-\right]
-\]
-
-For finite Fourier synthesis, the summation is limited to \(N\) harmonics:
-
-\[
-x_N(t)=\frac{a_0}{2}+
-\sum_{n=1}^{N}
-\left[
-a_n\cos(n\omega_0t)+
-b_n\sin(n\omega_0t)
-\right]
-\]
-
-### Fourier Coefficients
-
-The coefficient definitions over one complete period are:
-
-\[
-a_0=\frac{2}{T}
-\int_{t_0}^{t_0+T}x(t)\,dt
-\]
-
-\[
-a_n=\frac{2}{T}
-\int_{t_0}^{t_0+T}
-x(t)\cos(n\omega_0t)\,dt
-\]
-
-\[
-b_n=\frac{2}{T}
-\int_{t_0}^{t_0+T}
-x(t)\sin(n\omega_0t)\,dt
-\]
-
-**Coefficient convention:** \(a_0\) is twice the DC value because the Fourier series contains \(a_0/2\). The coefficient \(a_n\) multiplies the cosine term, while \(b_n\) multiplies the sine term.
-
-###
