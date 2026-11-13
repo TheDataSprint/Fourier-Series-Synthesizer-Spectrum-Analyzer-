@@ -84,7 +84,7 @@ $$
 Phase angle:
 
 $$
-\phi_n=\operatorname{atan2}(b_n,a_n)
+\phi_n=\mathrm{atan2}(b_n,a_n)
 $$
 
 The implementation covers Fourier coefficient calculation, harmonic reconstruction, amplitude spectrum, phase spectrum, and the Gibbs phenomenon.
@@ -149,18 +149,6 @@ Run the following command to generate a predefined example:
 ```bash
 python fourier_synthesizer.py --demo
 ```
-
-## Sample Output
-
-The program generates a three-panel visualization containing:
-
-- **Time-Domain Waveform:** Compares the ideal signal with its Fourier approximation.
-- **Amplitude Spectrum:** Displays the peak amplitude of DC and harmonic components.
-- **Phase Spectrum:** Displays the phase angles of non-zero harmonics.
-
-The generated visualization is saved as a PNG image.
-
-![Fourier Series Output](output_graph.png)
 
 ## Learning Outcomes
 
