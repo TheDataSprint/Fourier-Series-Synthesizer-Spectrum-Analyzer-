@@ -1,14 +1,14 @@
 # Fourier Series Synthesizer & Spectrum Analyzer
 
-A Python-based implementation of Fourier Series concepts, designed to generate periodic signals, calculate Fourier coefficients, reconstruct waveforms, and analyze their frequency components through numerical computation and visualization.
+A Python-based implementation of Fourier Series concepts, designed to generate periodic signals, calculate Fourier coefficients, reconstruct waveforms, and analyze frequency components through numerical computation and visualization.
 
-The project provides an interactive, menu-driven environment for studying harmonic synthesis and understanding the relationship between time-domain signals and frequency-domain representations.
+The project provides an interactive, menu-driven environment for understanding harmonic synthesis and the relationship between time-domain signals and frequency-domain representations.
 
 ## Overview
 
 Fourier Series is an important mathematical concept in Signals and Systems. It represents periodic signals as combinations of sinusoidal harmonics.
 
-This project demonstrates how different periodic waveforms can be reconstructed using a finite number of harmonics. Users can generate standard signals, enter custom Fourier coefficients, and observe their corresponding waveforms and spectra.
+This project demonstrates how periodic waveforms can be reconstructed using a finite number of harmonics. Users can generate standard signals, enter custom Fourier coefficients, and observe their corresponding waveforms and spectra.
 
 ## Key Features
 
@@ -66,13 +66,13 @@ Matplotlib-based visualization of:
 The project demonstrates the trigonometric Fourier Series:
 
 $$
-x(t)=\frac{a_0}{2}+\sum_{n=1}^{\infty}[a_n\cos(n\omega_0t)+b_n\sin(n\omega_0t)]
+x(t)=\frac{a_0}{2}+\sum_{n=1}^{\infty}\left[a_n\cos(n\omega_0t)+b_n\sin(n\omega_0t)\right]
 $$
 
 Fundamental frequency:
 
 $$
-f_0=\frac{1}{T}
+f_0=\frac{1}{T}, \qquad \omega_0=2\pi f_0
 $$
 
 Harmonic peak amplitude:
@@ -87,7 +87,22 @@ $$
 \phi_n=\mathrm{atan2}(b_n,a_n)
 $$
 
-The implementation covers Fourier coefficient calculation, harmonic reconstruction, amplitude spectrum, phase spectrum, and the Gibbs phenomenon.
+The phase convention is defined by:
+
+$$
+a_n\cos(n\omega_0t)+b_n\sin(n\omega_0t)
+=R_n\cos(n\omega_0t-\phi_n)
+$$
+
+The phase is undefined for a zero-amplitude harmonic.
+
+## Gibbs Phenomenon
+
+The Gibbs phenomenon occurs when a periodic signal containing discontinuities, such as a square wave, is approximated using a finite number of Fourier harmonics.
+
+Oscillations and overshoots appear near the discontinuities. Increasing the number of harmonics improves the approximation and narrows the oscillation region, but the characteristic overshoot does not completely disappear.
+
+This project demonstrates the Gibbs phenomenon through finite Fourier Series reconstruction.
 
 ## Project Structure
 
@@ -150,6 +165,20 @@ Run the following command to generate a predefined example:
 python fourier_synthesizer.py --demo
 ```
 
+The demo generates a square wave with an amplitude of 1, a fundamental frequency of 5 Hz, and 15 harmonics.
+
+## Sample Output
+
+The program generates a three-panel visualization containing:
+
+- **Time-Domain Waveform:** Compares the ideal waveform with its finite Fourier approximation.
+- **Amplitude Spectrum:** Displays the peak amplitudes of DC and harmonic components.
+- **Phase Spectrum:** Displays the phase angles of non-zero harmonics.
+
+The generated graph is saved as a PNG image.
+
+![Fourier Series Output](output_graph.png)
+
 ## Learning Outcomes
 
 This project provides practical experience in:
@@ -173,8 +202,8 @@ Potential improvements include:
 
 ## References
 
-- A. V. Oppenheim, A. S. Willsky, and S. H. Nawab, *Signals and Systems*, 2nd Edition, 1997.
-- B. P. Lathi and R. A. Green, *Linear Systems and Signals*, 3rd Edition, 2018.
+- A. V. Oppenheim, A. S. Willsky, and S. H. Nawab, *Signals and Systems*, 2nd Edition, Prentice Hall, 1997.
+- B. P. Lathi and R. A. Green, *Linear Systems and Signals*, 3rd Edition, Oxford University Press, 2018.
 - [NumPy Documentation](https://numpy.org/doc/)
 - [Matplotlib Documentation](https://matplotlib.org/stable/)
 
@@ -183,6 +212,3 @@ Potential improvements include:
 **Prince Yadav**
 
 Developed for academic and educational purposes.
-
----
-
