@@ -1,14 +1,14 @@
 # Fourier Series Synthesizer & Spectrum Analyzer
 
-A Python-based implementation of Fourier Series concepts, designed to generate periodic signals, calculate Fourier coefficients, reconstruct waveforms, and analyze frequency components through numerical computation and visualization.
+A Python-based implementation of Fourier Series concepts, designed to generate periodic signals, reconstruct waveforms using harmonics, analyze frequency components, and visualize the mathematical behavior of periodic signals.
 
-The project provides an interactive, menu-driven environment for understanding harmonic synthesis and the relationship between time-domain signals and frequency-domain representations.
+The project provides an interactive, menu-driven environment for exploring Fourier Series, harmonic synthesis, FFT analysis, approximation errors, and the Gibbs phenomenon.
 
 ## Overview
 
 Fourier Series is an important mathematical concept in Signals and Systems. It represents periodic signals as combinations of sinusoidal harmonics.
 
-This project demonstrates how periodic waveforms can be reconstructed using a finite number of harmonics. Users can generate standard signals, enter custom Fourier coefficients, and observe their corresponding waveforms and spectra.
+This project demonstrates how different periodic waveforms can be reconstructed using a finite number of harmonics. Users can generate standard signals, analyze their frequency components, compare theoretical Fourier coefficients with FFT results, and study the effect of increasing the number of harmonics.
 
 ## Key Features
 
@@ -16,93 +16,89 @@ This project demonstrates how periodic waveforms can be reconstructed using a fi
 
 Generation of commonly studied periodic signals:
 
-- Sine Wave
 - Square Wave
-- Triangle Wave
 - Sawtooth Wave
+- Triangle Wave
+- Full-Wave Rectified Sine
+- Half-Wave Rectified Sine
 
 **2. Fourier Series Synthesis**
 
-Reconstruction of periodic signals using a user-selected number of harmonics.
+Reconstruction of periodic waveforms using a user-selected number of harmonics.
 
-**3. Custom Coefficient Mode**
+**3. Harmonic Analysis**
 
-Supports user-defined Fourier coefficients (`a0`, `an`, and `bn`).
+Visualization of individual harmonic components and their combined waveform.
 
 **4. Spectrum Analysis**
 
-Calculation and visualization of:
+FFT-based frequency analysis and comparison with theoretical Fourier coefficients.
 
-- Harmonic frequencies
-- Cosine and sine coefficients
-- Peak amplitudes
-- Phase angles
+**5. Error and Convergence Analysis**
 
-**5. Graphical Visualization**
+Calculation and visualization of RMS approximation error for different harmonic counts.
 
-Matplotlib-based visualization of:
+**6. Gibbs Phenomenon**
 
-- Time-domain waveform
-- Amplitude spectrum
-- Phase spectrum
+Demonstration of overshoot near signal discontinuities and its convergence toward the theoretical Gibbs limit.
 
-**6. Additional Features**
+**7. Custom Harmonic Synthesizer**
+
+Supports user-defined DC offset and sine-harmonic amplitudes.
+
+**8. Additional Features**
 
 - Interactive command-line interface.
 - Automatic graph generation and saving.
 - Demo mode using `--demo`.
-- Input validation for reliable execution.
+- Input validation for menu choices and numeric inputs.
+- Verification of Parseval's theorem.
 
 ## Technology Stack
 
 | Technology | Purpose |
 |---|---|
 | Python 3 | Core programming language |
-| NumPy | Numerical computation and coefficient calculations |
+| NumPy | Numerical computation, FFT, and coefficient calculations |
 | Matplotlib | Signal visualization and graph plotting |
 
 ## Mathematical Concepts Implemented
 
-The project demonstrates the trigonometric Fourier Series:
+The project uses the trigonometric Fourier Series convention:
 
 $$
-x(t)=\frac{a_0}{2}+\sum_{n=1}^{\infty}\left[a_n\cos(n\omega_0t)+b_n\sin(n\omega_0t)\right]
+x(t)=a_0+\sum_{n=1}^{\infty}
+[a_n\cos(n\omega_0t)+b_n\sin(n\omega_0t)]
 $$
 
-Fundamental frequency:
+Fundamental angular frequency:
 
 $$
-f_0=\frac{1}{T}, \qquad \omega_0=2\pi f_0
+\omega_0=2\pi f_0
 $$
 
-Harmonic peak amplitude:
+Harmonic amplitude:
 
 $$
-R_n=\sqrt{a_n^2+b_n^2}
+c_n=\sqrt{a_n^2+b_n^2}
 $$
 
-Phase angle:
+Average power using Parseval's theorem:
 
 $$
-\phi_n=\mathrm{atan2}(b_n,a_n)
+P=a_0^2+\frac{1}{2}
+\sum_{n=1}^{\infty}(a_n^2+b_n^2)
 $$
 
-The phase convention is defined by:
-
-$$
-a_n\cos(n\omega_0t)+b_n\sin(n\omega_0t)
-=R_n\cos(n\omega_0t-\phi_n)
-$$
-
-The phase is undefined for a zero-amplitude harmonic.
+Here, `a0` represents the DC component directly.
 
 ## Gibbs Phenomenon
 
 The Gibbs phenomenon occurs when a periodic signal containing discontinuities, such as a square wave, is approximated using a finite number of Fourier harmonics.
 
-Oscillations and overshoots appear near the discontinuities. Increasing the number of harmonics improves the approximation and narrows the oscillation region, but the characteristic overshoot does not completely disappear.
+Oscillations appear near discontinuities. Increasing the number of harmonics improves the approximation, but the characteristic overshoot does not completely disappear.
 
-This project demonstrates the Gibbs phenomenon through finite Fourier Series reconstruction.
+This project demonstrates the Gibbs phenomenon through waveform reconstruction and a numerical overshoot convergence graph.
 
 ## Project Structure
 
@@ -149,42 +145,54 @@ python fourier_synthesizer.py
 
 ## How to Use
 
-1. Execute the Python program.
-2. Select a standard signal or custom coefficient mode.
-3. Enter the required amplitude and frequency values.
-4. Specify the number of harmonics.
-5. View the calculated Fourier coefficients in the terminal.
-6. Observe the generated waveform and frequency spectra.
-7. Access the automatically saved graph as `output_graph.png`.
+Run the Python program and select an option from the interactive menu:
+
+1. Synthesize a waveform.
+2. Compare different harmonic counts and observe the Gibbs phenomenon.
+3. Analyze the frequency spectrum using FFT.
+4. Perform RMS error and Gibbs overshoot analysis.
+5. Generate a custom harmonic signal.
+6. Generate the complete six-panel dashboard.
 
 **Demo Mode**
 
-Run the following command to generate a predefined example:
+Run the following command to generate the complete dashboard automatically:
 
 ```bash
 python fourier_synthesizer.py --demo
 ```
 
-The demo generates a square wave with an amplitude of 1, a fundamental frequency of 5 Hz, and 15 harmonics.
+To specify a custom output filename:
+
+```bash
+python fourier_synthesizer.py --demo --output my_graph.png
+```
 
 ## Sample Output
 
-The program generates a three-panel visualization containing:
+The program generates a six-panel visualization containing:
 
-- **Time-Domain Waveform:** Compares the ideal waveform with its finite Fourier approximation.
-- **Amplitude Spectrum:** Displays the peak amplitudes of DC and harmonic components.
-- **Phase Spectrum:** Displays the phase angles of non-zero harmonics.
+- **Fourier Approximation:** Compares the ideal square wave with its Fourier-series approximations.
+- **Harmonic Construction:** Shows how individual harmonics combine to build a signal.
+- **FFT Spectrum Analysis:** Compares measured FFT amplitudes with theoretical Fourier coefficients.
+- **Harmonic Comparison:** Compares square, sawtooth, and triangle wave harmonic amplitudes.
+- **RMS Error Analysis:** Shows how approximation error changes with the number of harmonics.
+- **Gibbs Phenomenon Analysis:** Demonstrates how the overshoot approaches its theoretical limit.
 
-The generated graph is saved as a PNG image.
+The generated dashboard is saved as `output_graph.png`.
+
+![Fourier Series Synthesizer Dashboard](output_graph.png)
 
 ## Learning Outcomes
 
 This project provides practical experience in:
 
 - Understanding Fourier Series representation.
-- Calculating trigonometric Fourier coefficients.
-- Reconstructing signals using harmonics.
-- Interpreting amplitude and phase spectra.
+- Reconstructing periodic signals using harmonics.
+- Understanding FFT-based spectrum analysis.
+- Comparing theoretical and measured frequency components.
+- Calculating RMS approximation errors.
+- Verifying Parseval's theorem.
 - Understanding the Gibbs phenomenon.
 - Applying NumPy and Matplotlib to mathematical problems.
 
@@ -192,11 +200,12 @@ This project provides practical experience in:
 
 Potential improvements include:
 
-- Fourier Transform and frequency-domain analysis.
-- User-controlled phase shifting.
-- Numerical coefficient estimation from sampled signals.
+- Phase spectrum analysis.
+- Custom cosine and sine coefficient input.
+- Fourier Transform visualization.
+- Numerical Fourier coefficient estimation from sampled signals.
 - Interactive graphical user interface.
-- Frequency-domain data export.
+- Exporting frequency-domain data.
 
 ## References
 
